@@ -1,4 +1,5 @@
 import streamlit as st
+import datetime
 import calendar
 
 def display_calendar(year, month):
@@ -17,19 +18,11 @@ def main():
     # Set up your Streamlit app
     st.title("Calendar Display App")
 
-    # Get the current year and month
-    current_date = st.date_input("Select Date", value=None, min_value=None, max_value=None, key=None)
+    # Get the current date
+    current_date = datetime.datetime.now()
 
-    # If date is not selected, display current month
-    if not current_date:
-        current_year, current_month, _ = st.date_input(label="", value=None, min_value=None, max_value=None, key=None, help="Select Date")
-        if not current_year or not current_month:
-            current_year, current_month = st.session_state.selected_year, st.session_state.selected_month
-        else:
-            st.session_state.selected_year = current_year
-            st.session_state.selected_month = current_month
-    else:
-        current_year, current_month, _ = current_date.year, current_date.month, current_date.day
+    # Get the current year and month
+    current_year, current_month = current_date.year, current_date.month
 
     # Display the calendar for the current year and month
     display_calendar(current_year, current_month)
