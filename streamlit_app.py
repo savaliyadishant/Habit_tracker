@@ -1,4 +1,4 @@
-import streamlit-calendar
+import streamlit_calendar
 from streamlit_calendar import calendar
 
 calendar_options = {
